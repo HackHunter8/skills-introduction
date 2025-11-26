@@ -23,7 +23,7 @@ For a more production-like experience:
 
 ```bash
 # Navigate to the project directory
-cd /path/to/skills-introduction
+cd /path/to/project
 
 # Start a local HTTP server
 python3 -m http.server 8080
@@ -40,7 +40,7 @@ If you have Node.js installed:
 npm install -g http-server
 
 # Navigate to the project directory
-cd /path/to/skills-introduction
+cd /path/to/project
 
 # Start the server
 http-server -p 8080

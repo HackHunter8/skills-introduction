@@ -7,6 +7,12 @@ const incrementBtn = document.getElementById('incrementBtn');
 const decrementBtn = document.getElementById('decrementBtn');
 const resetBtn = document.getElementById('resetBtn');
 
+// Check if all elements exist
+if (!counterDisplay || !incrementBtn || !decrementBtn || !resetBtn) {
+    console.error('Required DOM elements not found');
+    throw new Error('Failed to initialize: Missing required elements');
+}
+
 // Function to update the counter display
 function updateCounter() {
     counterDisplay.textContent = counter;
@@ -43,8 +49,14 @@ resetBtn.addEventListener('click', () => {
     updateCounter();
 });
 
-// Keyboard support
+// Keyboard support (only when not typing in input fields)
 document.addEventListener('keydown', (event) => {
+    // Ignore keyboard shortcuts if user is typing in an input field
+    const activeElement = document.activeElement;
+    if (activeElement && (activeElement.tagName === 'INPUT' || activeElement.tagName === 'TEXTAREA')) {
+        return;
+    }
+    
     if (event.key === 'ArrowUp' || event.key === '+') {
         counter++;
         updateCounter();
